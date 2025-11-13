@@ -114,7 +114,16 @@ const Profile = () => {
       updateData.append("password", formData.password);
       if (formData.newPassword)
         updateData.append("newPassword", formData.newPassword);
-      if (formData.image) updateData.append("image", formData.image);
+      if (formData.image) {
+        updateData.append("image", formData.image);
+      } else {
+        const response = await fetch("/images/defaultImg.png");
+        const blob = await response.blob();
+        let imageFile = new File([blob], "defaultImg.png", {
+          type: "image/png",
+        });
+        updateData.append("image", imageFile);
+      }
 
       const res = await fetch("http://127.0.0.1:8080/auth/update", {
         method: "PUT",
