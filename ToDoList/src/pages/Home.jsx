@@ -77,7 +77,6 @@ const Home = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Controlli lato frontend
     if (!formData.email || !formData.password || (!isLogin && !formData.name)) {
       alert("Compila tutti i campi obbligatori");
       return;
@@ -100,7 +99,6 @@ const Home = () => {
     submitData.append("verifyPassword", formData.verifyPassword);
 
     if (isLogin) {
-      // login
       try {
         const res = await fetch("http://127.0.0.1:8080/auth/login", {
           method: "POST",

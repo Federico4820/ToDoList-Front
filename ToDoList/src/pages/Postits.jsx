@@ -158,7 +158,6 @@ const Postits = () => {
         </div>
       )}
 
-      {/* Bottone aggiunta post-it */}
       <div className="d-flex justcon mt-4">
         <Button
           variant="dark"
@@ -201,7 +200,7 @@ const Postits = () => {
         </Row>
       )}
 
-      {/* MODALE DI MODIFICA */}
+      {/* MODALE POST-IT */}
       <Modal
         show={!!selectedPostit}
         onHide={() => setSelectedPostit(null)}
