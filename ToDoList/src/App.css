@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
 /*SFONDO*/
 .app-wrapper {
   position: relative;
@@ -101,15 +103,136 @@
 
 .postit-card {
   cursor: pointer;
-  min-height: 150px;
-  transition: transform 0.2s;
+  min-height: 200px; /* Increased height */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  border-radius: 2px; /* Less rounded corners for paper look */
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+  font-family: 'Indie Flower', cursive; /* Handwritten font */
+  font-size: 1.2rem;
+  color: #333;
+  padding: 1rem;
+  position: relative;
 }
 
-.postit-card:hover {
-  transform: scale(1.05);
+/* Pin effect (optional, simple circle) */
+.postit-card::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 15px;
+  height: 15px;
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 50%;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+  display: none; /* Hidden for now, maybe too much */
 }
+
+/* Tape effect */
+.postit-card::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 100px;
+  height: 30px;
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+
+.postit-card:hover {
+  transform: scale(1.05) rotate(0deg) !important; /* Reset rotation on hover */
+  box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+/* Random rotations for organic look */
+.col:nth-child(odd) .postit-card {
+  transform: rotate(2deg);
+}
+
+.col:nth-child(even) .postit-card {
+  transform: rotate(-2deg);
+}
+
+.col:nth-child(3n) .postit-card {
+  transform: rotate(1deg);
+}
+
+.col:nth-child(4n) .postit-card {
+  transform: rotate(-3deg);
+}
+
 
 .custom-modal .modal-dialog {
   max-width: 600px;
   width: 90%;
+  font-family: 'Indie Flower', cursive;
+}
+
+.custom-modal .modal-content {
+  border: none;
+  box-shadow: 10px 10px 30px rgba(0,0,0,0.5);
+}
+
+/* NOT FOUND */
+.not-found-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; /* Takes up most of the screen */
+  text-align: center;
+}
+
+.not-found-content {
+  background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(204, 210, 21, 0.2); /* Subtle glow with theme color */
+  color: white;
+  max-width: 600px;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.not-found-title {
+  font-size: 6rem;
+  font-weight: bold;
+  color: #ccd215; /* Theme yellow */
+  margin-bottom: 0;
+  line-height: 1;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.not-found-subtitle {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #fff;
+}
+
+.not-found-text {
+  font-size: 1.2rem;
+  color: #ccc;
+  margin-bottom: 2rem;
+}
+
+.not-found-button {
+  background-color: #ccd215;
+  border-color: #ccd215;
+  color: #000;
+  font-weight: bold;
+  padding: 0.75rem 2rem;
+  transition: all 0.3s ease;
+}
+
+.not-found-button:hover {
+  background-color: #b3b812;
+  border-color: #b3b812;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }

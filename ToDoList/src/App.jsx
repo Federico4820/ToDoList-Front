@@ -9,6 +9,7 @@ import Squares from "./components/Squares";
 import Home from "./pages/Home";
 import Postits from "./pages/Postits";
 import Profile from "./pages/Profile";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function AppContent() {
           <Route path="/" element={<Home />} />
           <Route path="/postits" element={<Postits />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Container>
     </>

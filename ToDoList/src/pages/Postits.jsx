@@ -25,7 +25,16 @@ const Postits = () => {
 
   const navigate = useNavigate();
 
-  const colors = ["red", "yellow", "green", "orange", "blue", "purple"];
+  const colorMap = {
+    red: "#ffcdd2",
+    yellow: "#fff9c4",
+    green: "#dcedc8",
+    orange: "#ffe0b2",
+    blue: "#b3e5fc",
+    purple: "#e1bee7",
+  };
+
+  const colors = Object.keys(colorMap);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -181,7 +190,7 @@ const Postits = () => {
             <Col key={post.id}>
               <Card
                 className="postit-card mt-5"
-                style={{ backgroundColor: post.color }}
+                style={{ backgroundColor: colorMap[post.color] || post.color }}
                 onClick={() => {
                   setSelectedPostit(post);
                   setEditContent(post.content);
@@ -210,7 +219,7 @@ const Postits = () => {
         <Modal.Header
           closeButton
           style={{
-            backgroundColor: modalColor,
+            backgroundColor: colorMap[modalColor] || modalColor,
             borderColor: "black",
             alignItems: "center",
           }}
@@ -225,22 +234,22 @@ const Postits = () => {
           </div>
         </Modal.Header>
 
-        <Modal.Body style={{ backgroundColor: modalColor }}>
+        <Modal.Body style={{ backgroundColor: colorMap[modalColor] || modalColor }}>
           <Form.Control
             as="textarea"
             rows={10}
             value={editContent}
             onChange={(e) => setEditContent(e.target.value)}
             style={{
-              backgroundColor: modalColor,
+              backgroundColor: colorMap[modalColor] || modalColor,
               color: "#000",
-              borderColor: modalColor,
+              borderColor: "transparent",
             }}
           />
         </Modal.Body>
 
         <Modal.Footer
-          style={{ backgroundColor: modalColor, borderColor: "black" }}
+          style={{ backgroundColor: colorMap[modalColor] || modalColor, borderColor: "transparent" }}
         >
           <Button
             variant="danger"
