@@ -29,7 +29,7 @@ const Home = () => {
       if (!token) return navigate("/");
 
       try {
-        const res = await fetch("http://127.0.0.1:8080/auth/me", {
+        const res = await fetch("https://apitodolist.lepore.pro/auth/me", {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -100,7 +100,7 @@ const Home = () => {
 
     if (isLogin) {
       try {
-        const res = await fetch("http://127.0.0.1:8080/auth/login", {
+        const res = await fetch("https://apitodolist.lepore.pro/auth/login", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -132,7 +132,7 @@ const Home = () => {
         }
         submitData.append("image", imageFile);
 
-        const res = await fetch("http://127.0.0.1:8080/auth/register", {
+        const res = await fetch("https://apitodolist.lepore.pro/auth/register", {
           method: "POST",
           body: submitData,
         });

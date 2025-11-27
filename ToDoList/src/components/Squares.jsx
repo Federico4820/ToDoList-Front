@@ -22,10 +22,14 @@ const Squares = ({
     // resize canvas to device pixels for sharpness
     const resizeCanvas = () => {
       const ratio = window.devicePixelRatio || 1;
-      const w = window.innerWidth;
-      const h = window.innerHeight;
+      // Use the larger of window inner dimensions or screen dimensions to ensure coverage
+      // This helps on mobile where innerHeight changes with browser bars
+      const w = Math.max(window.innerWidth, window.screen.width, document.documentElement.scrollWidth);
+      const h = Math.max(window.innerHeight, window.screen.height, document.documentElement.scrollHeight);
+      
       canvas.style.width = `${w}px`;
       canvas.style.height = `${h}px`;
+      
       canvas.width = Math.floor(w * ratio);
       canvas.height = Math.floor(h * ratio);
       ctx.setTransform(ratio, 0, 0, ratio, 0, 0); // keep drawing in CSS pixels

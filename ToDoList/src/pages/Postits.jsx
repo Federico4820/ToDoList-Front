@@ -42,7 +42,7 @@ const Postits = () => {
 
     const fetchUser = async () => {
       try {
-        const res = await fetch("http://127.0.0.1:8080/auth/me", {
+        const res = await fetch("https://apitodolist.lepore.pro/auth/me", {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (!res.ok) throw new Error("Errore user");
@@ -56,7 +56,7 @@ const Postits = () => {
 
     const fetchPostits = async () => {
       try {
-        const res = await fetch("http://127.0.0.1:8080/feed/postsIt/my", {
+        const res = await fetch("https://apitodolist.lepore.pro/feed/postsIt/my", {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (!res.ok) throw new Error("Errore postits");
@@ -78,7 +78,7 @@ const Postits = () => {
     if (!window.confirm("Sei sicuro di voler cancellare questo post-it?"))
       return;
     try {
-      const res = await fetch(`http://127.0.0.1:8080/feed/postIt/${id}`, {
+      const res = await fetch(`https://apitodolist.lepore.pro/feed/postIt/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -94,7 +94,7 @@ const Postits = () => {
     const token = localStorage.getItem("token");
     try {
       const res = await fetch(
-        `http://127.0.0.1:8080/feed/postIt/${selectedPostit.id}`,
+        `https://apitodolist.lepore.pro/feed/postIt/${selectedPostit.id}`,
         {
           method: "PUT",
           headers: {
@@ -126,7 +126,7 @@ const Postits = () => {
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
     try {
-      const res = await fetch("http://127.0.0.1:8080/feed/postIt", {
+      const res = await fetch("https://apitodolist.lepore.pro/feed/postIt", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -159,7 +159,7 @@ const Postits = () => {
         <div className="header d-flex align-items-center justify-content-center">
           <h3 className="welcome-text">Benvenuto, {user.name}</h3>
           <img
-            src={`http://127.0.0.1:8080/${user.profileImage}`}
+            src={`https://apitodolist.lepore.pro/${user.profileImage}`}
             alt="Profilo"
             className="profile-pic"
             onClick={() => navigate("/profile")}

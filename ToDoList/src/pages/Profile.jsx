@@ -36,7 +36,7 @@ const Profile = () => {
     if (!token) return navigate("/");
 
     try {
-      const res = await fetch("http://127.0.0.1:8080/auth/me", {
+      const res = await fetch("https://apitodolist.lepore.pro/auth/me", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -56,7 +56,7 @@ const Profile = () => {
         newPassword: "",
         image: null,
       });
-      setPreview(`http://127.0.0.1:8080/${data.user.profileImage}`);
+      setPreview(`https://apitodolist.lepore.pro/${data.user.profileImage}`);
     } catch (err) {
       console.error(err);
       localStorage.removeItem("token");
@@ -125,7 +125,7 @@ const Profile = () => {
         updateData.append("image", imageFile);
       }
 
-      const res = await fetch("http://127.0.0.1:8080/auth/update", {
+      const res = await fetch("https://apitodolist.lepore.pro/auth/update", {
         method: "PUT",
         headers: { Authorization: `Bearer ${token}` },
         body: updateData,
@@ -167,7 +167,7 @@ const Profile = () => {
     setIsDeleting(true);
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://127.0.0.1:8080/auth/delete", {
+      const res = await fetch("https://apitodolist.lepore.pro/auth/delete", {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -266,7 +266,7 @@ const Profile = () => {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formPassword">
-              <Form.Label>Vecchia Password *</Form.Label>
+              <Form.Label>Password *</Form.Label>
               <Form.Control
                 type="password"
                 name="password"
