@@ -150,7 +150,6 @@ body{
   z-index: 1;
 }
 
-
 .col:nth-child(odd) .postit-card {
   transform: rotate(2deg);
 }
@@ -167,7 +166,7 @@ body{
   transform: rotate(-3deg);
 }
 
-
+/*MODALE*/
 .custom-modal .modal-dialog {
   max-width: 600px;
   width: 90%;
@@ -179,7 +178,7 @@ body{
   box-shadow: 10px 10px 30px rgba(0,0,0,0.5);
 }
 
-
+/*NOT FOUND*/
 .not-found-container {
   display: flex;
   justify-content: center;
